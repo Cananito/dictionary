@@ -12,6 +12,10 @@ static void print_definition(char const* const input_word) {
                                                     input_string,
                                                     input_range);
   CFRelease(input_string);
+  if (!result_string) {
+    printf("<no definition found>\n");
+    return;
+  }
   // TODO: Do a more precise allocation size.
   CFIndex buffer_size = CFStringGetLength(result_string) * 2;
   char* result = calloc(buffer_size, sizeof(char));
